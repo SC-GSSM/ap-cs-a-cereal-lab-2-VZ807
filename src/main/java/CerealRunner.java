@@ -27,7 +27,8 @@ public class CerealRunner {
   public static ArrayList<Cereal> filterCarbsPerCup(int min, int max) {
     ArrayList<Cereal> res = new ArrayList<Cereal>();
     for (Cereal c : cereals) {
-      if (c.getCarbs() > min && c.getCarbs() < max) {
+      if ((c.getCarbs() / c.getCups()) >= min &&
+          (c.getCarbs() / c.getCups()) <= max) {
         res.add(c);
       }
     }
@@ -65,7 +66,7 @@ public class CerealRunner {
 
   public static double findNetCarbsPerCup(Cereal c) {
     // Add your solution to Question 3 here.
-    return (c.getCarbs() - c.getFiber());
+    return (c.getCarbs() - c.getFiber()) / c.getCups();
   }
 
   /*****************************************************************
